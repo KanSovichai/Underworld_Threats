@@ -1,78 +1,75 @@
-@import url('https://fonts.googleapis.com/css2?family=New+Rocker&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=New+Rocker&display=swap");
 
-:root{
-    --dark-red: rgb(133, 9, 0);
-    --dark-blue: rgb( 0, 8, 120);
+:root {
+	--dark-red: rgb(133, 9, 0);
+	--dark-blue: rgb(0, 8, 120);
 }
 
-
 header {
-    width: 100vw;
-    height: 10vh;
-    background-color: rgb(24, 24, 24);
-    background: transparent;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+	width: 100%;
+	max-width: 100%;
+	height: 10vh;
+	background-color: rgb(24, 24, 24);
+	background: transparent;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
 }
 
 .logo_wrapper {
-    height: 100%;
-    width: 30%;
-    background-color: var(--dark-red);
-    clip-path: polygon(0 0, 100% 0%, 75% 100%, 0 100%);
-    padding-left: 3%;
-    display: flex;
-    /* justify-content: center; */
-    align-items: center;
+	height: 100%;
+	width: 30%;
+	background-color: var(--dark-red);
+	clip-path: polygon(0 0, 100% 0%, 75% 100%, 0 100%);
+	padding-left: 3%;
+	display: flex;
+	/* justify-content: center; */
+	align-items: center;
 }
 .logo_wrapper img {
-    height: 70%;
-    width: 70%;
+	height: 70%;
+	width: 70%;
 }
 
-.nav_container{
-    width: 20%;
-    height: 80%;
-    /* background-color: red; */
-    backdrop-filter: blur(50px);
-    border-radius: 10rem;
+.nav_container {
+	width: 20%;
+	height: 80%;
+	/* background-color: red; */
+	backdrop-filter: blur(50px);
+	border-radius: 10rem;
 }
 
 .nav_container ul {
-    width: 100%;
-    height: 100%;
-    list-style: none;
-    display: flex;
+	width: 100%;
+	height: 100%;
+	list-style: none;
+	display: flex;
 }
 
-.nav_container ul li{
-    width: 50%;
-    height: 100%;
-    
-    
-    
-    
-    /* background-color: blue; */
+.nav_container ul li {
+	width: 50%;
+	height: 100%;
+
+	/* background-color: blue; */
 }
 
-.nav_container ul li a{
-    text-decoration: none;
-    width: 100%;
-    height: 100%;
-    border-radius: 10rem;
-    color: white;
-    font-size: clamp(1rem , 1.5rem , 2rem);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-family: "New Rocker", system-ui;
+.nav_container ul li a {
+	text-decoration: none;
+	width: 100%;
+	height: 100%;
+	border-radius: 10rem;
+	color: white;
+	font-size: clamp(1rem, 1.5rem, 2rem);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-family: "New Rocker", system-ui;
 }
 
-.nav_container ul li a.activeDante{
-    background-color: var(--dark-red);
+.nav_container ul li a.activeDante {
+	background-color: var(--dark-red);
 }
 
-.nav_container ul li a.activeVergil{
-    background-color: var(--dark-blue);
+.nav_container ul li a.activeVergil {
+	background-color: var(--dark-blue);
 }

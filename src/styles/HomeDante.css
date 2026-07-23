@@ -1,28 +1,226 @@
-@import url('https://fonts.googleapis.com/css2?family=Manufacturing+Consent&display=swap');
-.container{
-    width: 100vw;
-    height: 100vh;
-    background-image: url(../assets/resource/dante.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center 10%;
-    opacity: 0.7;
-    padding-bottom: 7%;
+@import url("https://fonts.googleapis.com/css2?family=Manufacturing+Consent&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=New+Rocker&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap");
+
+.hero_container {
+	width: 100%;
+	height: 100vh;
+	background-image: url(../assets/resource/dante.jpg);
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center 10%;
+	opacity: 0.7;
+	padding-bottom: 7%;
 }
 .nav_wrapper {
-    width: 100%;
-    height: 10%;
+	width: 100%;
+	height: 10%;
 }
 
 .hero_text_container {
-    width: 100%;
-    height: 90%;
-    display: flex;
-    align-items: end;
-    padding-left: 5rem;
+	width: 100%;
+	max-width: 100%;
+	height: 90%;
+	display: flex;
+	align-items: end;
+	padding-left: clamp(1rem, 4vw, 5rem);
 }
-.hero_text_container h1{
+.hero_text_container h1 {
+	max-width: 100%;
+	color: white;
+	font-size: clamp(2.5rem, 6vw, 6rem);
+	line-height: 1.1;
+	overflow-wrap: anywhere;
+	font-family: "Manufacturing Consent", system-ui;
+}
+
+.description_container {
+	width: 100%;
+	height: 80vh;
+	display: flex;
+}
+
+#gothic_dante_img {
+	width: 50%;
+	height: 100%;
+}
+
+.context_container {
+	width: 50%;
+	height: 100%;
+	display: flex;
+	align-items: end;
+	background-color: white;
+}
+
+.dante_bg_wrapper {
+	width: 90%;
+	height: 90%;
+	background-image: url("../assets/resource/Dante_pointing_gun.png");
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
+	background-attachment: fixed;
+}
+
+.text_container {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	padding: 0px 5%;
+	background-image: url("../assets/resource/broken_glass_effect.png");
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+}
+
+.text_container h1 {
+	font-family: "New Rocker", system-ui;
+	color: var(--dark-red);
+	font-size: 3rem;
+}
+
+.text_container p {
+	font-family: "Archivo Black", system-ui;
+	letter-spacing: 1px;
+	line-height: 3rem;
+	color: white;
+}
+
+.feature_dante_container{
+    width: 100%;
+    height: 85vh;
+    background-image: url("../assets/resource/Sitting_dante.png");
+    background-repeat: no-repeat;
+    background-position: top;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+.broken_wood_wrapper{
+    width: 100%;
+    height: 100%;
+    background-image: url("../assets/resource/broken_wood_effect.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+}
+
+.banner_wrapper{
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.dante_sword_wrapper{
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.banner_text{
+    font-family: "New Rocker", system-ui;
+    font-size: 3rem;
+    letter-spacing: 2px;
+    color: var(--dark-red);
+}
+
+.items_container{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+}
+
+.items{
+    width: 70%;
+    height: 100%;
+    overflow-y: scroll;
+    display: flex;
+    flex-wrap: wrap;
+    background-image: url("../assets/resource/Dante_pointing_gun.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    padding: 3%;
+}
+
+.item_card{
+    width: 25%;
+    height: 40%;
+    background-color: black;
+    position: relative;
+    border: 3px solid white;
+    border-radius: 2%;
+}
+
+.frame_style{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: -10%;
+    left: -15%;
+    z-index: 10;
+    background-image: url("../assets/resource/frame_style.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.content{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-bottom: 2%;
+    align-items: center;
+}
+
+.item_img{
+    width: 100%;
+    height: 50%;
+    overflow: hidden;
+    
+}
+
+.item_img img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 2%;
+}
+
+.item_title{
+    font-family: "New ROcker", system-ui;
     color: white;
-    font-size: 6rem;
-    font-family: "Manufacturing Consent", system-ui;
+    overflow-x: hidden;
+}
+
+.view_button{
+    width: 70%;
+    height: 10%;
+    text-align: center;
+    font-family: "Archivo Black",system-ui;
+    font-size: 1rem;
+    color: var(--dark-red);
+}
+
+
+
+.dante_pic_right_banner{
+    width: 30%;
+    height: 100%;
+    background-image: url("../assets/resource/dante_banner.png");
+    background-size: 33% 100%;
+    background-attachment: fixed;
+    background-position: center;
 }
