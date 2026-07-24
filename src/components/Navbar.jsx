@@ -31,7 +31,19 @@ const Navbar = (props) => {
 				</ul>
 			</nav>
 
-			<div className="profile_wrapper"></div>
+			<div className="profile_wrapper">
+				<ul>
+					<li><Link><a href="">About Us</a></Link></li>
+					<li><Link><a href="">Contact Us</a></Link></li>
+				</ul>
+
+				<div className="profile">
+					<div className="username">Guess</div>
+					<div className="profile_picture">
+						<h2>G</h2>
+					</div>
+				</div>
+			</div>
 		</header>
 	);
 };
