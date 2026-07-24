@@ -64,6 +64,51 @@ const Home = (props) => {
                         </div>
                     </div>
 
+					<div className="item_card">
+                        <div className="frame_style"></div>
+                        <div className="content">
+                            <div className="item_img">
+                                <img src="https://m.media-amazon.com/images/I/71gt1HB3kDL._AC_UY350_.jpg" alt="" />
+                            </div>
+                            <div className="item_title">
+                                <h1>Dante Sword</h1>
+                            </div>
+                            <button className="view_button">
+                                VIEW
+                            </button>
+                        </div>
+                    </div>
+
+					<div className="item_card">
+                        <div className="frame_style"></div>
+                        <div className="content">
+                            <div className="item_img">
+                                <img src="https://m.media-amazon.com/images/I/71gt1HB3kDL._AC_UY350_.jpg" alt="" />
+                            </div>
+                            <div className="item_title">
+                                <h1>Dante Sword</h1>
+                            </div>
+                            <button className="view_button">
+                                VIEW
+                            </button>
+                        </div>
+                    </div>
+
+					<div className="item_card">
+                        <div className="frame_style"></div>
+                        <div className="content">
+                            <div className="item_img">
+                                <img src="https://m.media-amazon.com/images/I/71gt1HB3kDL._AC_UY350_.jpg" alt="" />
+                            </div>
+                            <div className="item_title">
+                                <h1>Dante Sword</h1>
+                            </div>
+                            <button className="view_button">
+                                VIEW
+                            </button>
+                        </div>
+                    </div>
+
                     
                 
                 

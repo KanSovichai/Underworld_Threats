@@ -151,6 +151,7 @@
     background-size: cover;
     background-position: center;
     padding: 3%;
+    gap: 10%;
 }
 
 .item_card{
