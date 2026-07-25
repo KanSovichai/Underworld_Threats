@@ -53,6 +53,7 @@ header {
 	/* background-color: blue; */
 }
 
+
 .nav_container ul li a {
 	text-decoration: none;
 	width: 100%;
@@ -96,14 +97,14 @@ header {
 }
 
 .profile_wrapper ul li{
-	width: 50%;
+	width: 40%;
 	height: 100%;
 	display: flex;
 	opacity: 0.5;
 	justify-content: center;
 	align-items: center;
 	font-family: "Archivo Black",system-ui;
-	font-size: 1rem;
+	font-size: 1rem;	
 }
 
 .profile_wrapper ul li a{
