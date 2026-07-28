@@ -33,11 +33,10 @@ const HomeVergil = (props) => {
 					<Navbar status={props.status}></Navbar>
 				</div>
 				<div className="hero_vergil_contents">
-					<div className="slash_effect"></div>
 					<div className="hero_vergil_text">
 						<h1>The Alpha & Omega</h1>
 					</div>
-					<div className="hero_vergil_img"></div>
+					
 				</div>
 			</div>
 			<div className="vergil_container">

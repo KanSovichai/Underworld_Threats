@@ -68,6 +68,11 @@ hr{
     font-size: 0.8rem;
 }
 
+.about_us_container ul li a, .contact_us_container ul li a{
+    text-decoration: none;
+    color: white;
+}
+
 
 
 .copyright{

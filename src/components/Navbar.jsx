@@ -33,7 +33,7 @@ const Navbar = (props) => {
 
 			<div className="profile_wrapper">
 				<ul>
-					<li><Link><a href="">About Us</a></Link></li>
+					<li><Link to='/aboutus' ><a href="">About Us</a></Link></li>
 					<li><Link><a href="">Contact Us</a></Link></li>
 				</ul>
 
