@@ -67,11 +67,11 @@ header {
 	font-family: "New Rocker", system-ui;
 }
 
-.nav_container ul li a.activeDante {
+.nav_container ul li a.activeDante , #Dante_A_Tag:hover{
 	background-color: var(--dark-red);
 }
 
-.nav_container ul li a.activeVergil {
+.nav_container ul li a.activeVergil , #Vergil_A_Tag:hover{
 	background-color: var(--dark-blue);
 }
 
