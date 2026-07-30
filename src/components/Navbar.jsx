@@ -9,6 +9,7 @@ const Navbar = (props) => {
 				<img src={Logo} alt="" />
 			</div>
 			<nav className="nav_container">
+				
 				<ul>
 					<li>
 						<a
@@ -29,6 +30,14 @@ const Navbar = (props) => {
 						</a>
 					</li>
 				</ul>
+				<input
+						id="toggle-input"
+						aria-expanded="false"
+						type="checkbox"
+						aria-controls="nav-links"
+						class="toggle-input"
+					/>
+				<label for="toggle-input" class="toggle-label">☰</label>
 			</nav>
 
 			<div className="profile_wrapper">

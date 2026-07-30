@@ -134,9 +134,193 @@ header {
 .profile_picture{
 	width: 40px;
 	height: 40px;
-	border-radius: 50%;
+	clip-path: circle(50% at 50% 50%);
 	background-color: red;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 }
+
+
+.toggle-input{
+	display: none;
+}
+
+.toggle-label{
+	display: none;
+}
+
+/* ============================
+   MOBILE RESPONSIVE (Hamburger)
+   ============================ */
+@media (max-width: 768px) {
+	header {
+		position: relative;
+		/* align-items: space-between; */
+		z-index: 1000;
+	}
+
+	/* ---------- Hamburger Button ---------- */
+	.toggle-label {
+		display: block;
+		color: white;
+		font-size: 0; /* hide default text, use pseudo-element */
+		cursor: pointer;
+		padding: 0.5rem;
+		line-height: 1;
+		user-select: none;
+		background-color: black;
+		/* justify-content: end; */
+		/* align-items: end; */
+	}
+
+	.toggle-label::before {
+		content: "☰";
+		font-size: 1.8rem;
+	}
+
+	#toggle-input:checked + .toggle-label::before {
+		content: "✕";
+	}
+
+	/* ---------- Header Layout ---------- */
+	.logo_wrapper {
+		width: 50%;
+		clip-path: polygon(0 0, 100% 0%, 85% 100%, 0 100%);
+		padding-left: 5%;
+	}
+
+	.logo_wrapper img {
+		width: 80%;
+		height: auto;
+	}
+
+	/* Nav container becomes the hamburger wrapper */
+	.nav_container {
+		width: auto;
+		height: 100%;
+		background: transparent;
+		backdrop-filter: none;
+		border-radius: 0;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		margin-left: auto;
+	}
+
+	/* Hide desktop nav links by default */
+	.nav_container ul {
+		/* visibility: hidden; */
+		display: none;
+	}
+
+	/* Profile wrapper shrinks to just the avatar/name */
+	.profile_wrapper {
+		width: auto;
+		background: transparent;
+		backdrop-filter: none;
+		justify-content: end;
+		/* padding-right: 0; */
+		border-radius: 0;
+	}
+
+	/* Hide About Us / Contact Us until hamburger opens */
+	.profile_wrapper ul {
+		display: none;
+	}
+
+	/* Profile hidden from header bar on mobile — moves into hamburger */
+	.profile {
+		display: none;
+	}
+
+	/* ---------- Mobile Menu Open ---------- */
+
+	/* Dante & Vergil dropdown */
+	header:has(#toggle-input:checked) .nav_container {
+		position: absolute;
+		top: 7vh;
+		left: 0;
+		width: 100%;
+		height: auto;
+		background-color: rgba(0, 0, 0, 0.95);
+		backdrop-filter: blur(20px);
+		z-index: 999;
+	}
+
+	header:has(#toggle-input:checked) .nav_container ul {
+		display: flex;
+		flex-direction: column;
+		width: 100%;
+		height: auto;
+	}
+
+	header:has(#toggle-input:checked) .nav_container ul li {
+		width: 100%;
+		height: 60px;
+	}
+
+	header:has(#toggle-input:checked) .nav_container ul li a {
+		border-radius: 0;
+		font-size: 1.2rem;
+	}
+
+	/* About Us & Contact Us dropdown (stacked below Dante/Vergil) */
+	header:has(#toggle-input:checked) .profile_wrapper ul {
+		display: flex;
+		flex-direction: column;
+		position: absolute;
+		top: calc(7vh + 120px); /* 2 nav items × 60px */
+		left: 0;
+		width: 100%;
+		height: auto;
+		background-color: rgba(0, 0, 0, 0.95);
+		backdrop-filter: blur(20px);
+		z-index: 998;
+		border-top: 1px solid rgba(255, 255, 255, 0.1);
+	}
+
+	header:has(#toggle-input:checked) .profile_wrapper ul li {
+		width: 100%;
+		height: 60px;
+		opacity: 1;
+		justify-content: center;
+	}
+
+	header:has(#toggle-input:checked) .profile_wrapper ul li a {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		width: 100%;
+		height: 100%;
+		color: white;
+		text-decoration: none;
+		font-family: "Archivo Black", system-ui;
+		font-size: 1rem;
+	}
+
+	/* Hover feedback for all mobile menu items */
+	header:has(#toggle-input:checked) .nav_container ul li a:hover,
+	header:has(#toggle-input:checked) .profile_wrapper ul li a:hover {
+		background-color: rgba(255, 255, 255, 0.08);
+	}
+
+	/* Profile row inside the open hamburger menu (stacked below the two link lists) */
+	header:has(#toggle-input:checked) .profile {
+		display: flex;
+		position: absolute;
+		top: calc(7vh + 240px); /* below 2 nav items (120px) + 2 profile links (120px) */
+		left: 0;
+		width: 100%;
+		height: 60px;
+		background-color: rgba(0, 0, 0, 0.95);
+		backdrop-filter: blur(20px);
+		justify-content: center;
+		align-items: center;
+		gap: 1rem;
+		padding-right: 0;
+		border-top: 1px solid rgba(255, 255, 255, 0.1);
+		z-index: 997;
+	}
+}
+

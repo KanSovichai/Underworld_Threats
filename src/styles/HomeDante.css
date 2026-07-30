@@ -85,8 +85,9 @@
 
 .text_container p {
 	font-family: "Archivo Black", system-ui;
-	letter-spacing: 1px;
-	line-height: 3rem;
+    overflow-y: scroll;
+	letter-spacing: 1%;
+	line-height: 200%;
 	color: white;
 }
 
@@ -125,6 +126,10 @@
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.dante_sword_wrapper img{
+    width: 100%;
 }
 
 .banner_text{
@@ -223,5 +228,36 @@
     background-image: url("../assets/resource/dante_banner.png");
     background-size: 33% 100%;
     background-attachment: fixed;
-    background-position: center;
+    background-position: 100% 100%;
+    background-repeat: no-repeat;
+}
+
+
+@media (max-width: 768px) {
+    .banner_text{
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 391px) {
+    .banner_text{
+        font-size: 1.1rem;
+    }
+
+    .items_container{
+        height: 200vh;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .items{
+        width: 100%;
+        justify-content: center;
+    }
+
+    .dante_pic_right_banner{
+        width: 100%;
+        background-size: 100%;
+        background-repeat: no-repeat;
+    }
 }

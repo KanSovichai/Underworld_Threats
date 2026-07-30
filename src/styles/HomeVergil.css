@@ -19,7 +19,7 @@
 }
 
 #intro_mp4{
-    width: 100vw;
+    height: 100vh;
     display: block;
     height: auto;
     position: fixed;
@@ -28,10 +28,12 @@
     z-index: 100;
 }
 
+
+
 .vergil_navbar_wrapper{
     width: 100%;
     position: absolute;
-    z-index: 10;
+    z-index: 1001;
 }
 
 
@@ -44,7 +46,15 @@
     align-items: center;
     position: relative;
     background-image: url("../assets/resource/vergil_aura_farming.jpg");
-    background-size: 100% auto;
+    background-size: auto 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+@media (min-width: 1499px){
+    .hero_vergil_contents{
+        background-size: 100% 100%;
+    }
 }
 
 .hero_vergil_text{
@@ -54,15 +64,17 @@
     display: flex;
     justify-content: center;
     align-items:end;
+    padding-left: 2%;
     padding-bottom: 10%;
     position: relative;
     z-index: 10;
 }
 
 .hero_vergil_text h1{
+
     color: white;
     font-family: "Manufacturing Consent",system-ui;
-    font-size: clamp(2.5rem, 4vw, 6rem);
+    font-size: 6rem;
 	line-height: 1.1;
 }
 
@@ -186,4 +198,38 @@
     color: var(--dark-red);
 }
 
+@media (max-width: 768px){
+    .hero_vergil_text h1{
+        font-size: 4rem;
+    }
+    .hero_vergil_text{
+        width: 50%;
+    }
 
+    .vergil_description_container{
+        padding-right: 5%;
+    }
+
+
+    .vergil_description_container p{
+        font-size: 0.9rem;
+        line-height: 1.7;
+    }
+}
+
+
+@media (max-width: 391px) {
+    .hero_vergil_text h1{
+        font-size: 2.5rem;
+    }
+    .hero_vergil_text{
+        width: 70%;
+    }
+
+    .vergil_description_container{
+        padding-right: 1%;
+    }
+    .vergil_description_container p{
+        line-height: 1.5;
+    }
+}
