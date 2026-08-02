@@ -47,10 +47,13 @@ const Navbar = (props) => {
 				</ul>
 
 				<div className="profile">
-					<div className="username">Guess</div>
+					{/* <div className="username">Guess</div>
 					<div className="profile_picture">
 						<h2>G</h2>
-					</div>
+					</div> */}
+
+					<Link to='/auth/login' className="login_button" >Login</Link>
+
 				</div>
 			</div>
 		</header>

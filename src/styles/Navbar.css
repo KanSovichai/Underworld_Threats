@@ -126,6 +126,19 @@ header {
 	padding-right: 5%;
 }
 
+.login_button{
+	font-family: "New Rocker",system-ui;
+	text-align: center;
+	text-decoration: none;
+	color: white;
+	width: 5rem;
+	border-radius: 50px;
+	padding: 8px;
+	background-color: var(--dark-red);
+}
+
+
+
 .username{
 	font-weight: bold;
 	font-size: 1rem;
