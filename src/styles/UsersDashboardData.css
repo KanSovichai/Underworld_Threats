@@ -1,0 +1,167 @@
+.users_data_container{
+    background-color: black;
+    width: 100%;
+    height: 87vh;
+    overflow-y: scroll;
+    position: relative;
+}
+
+.users_data_toolbar{
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    padding: 1%;
+    background-color: white;
+    border-bottom: 1px solid black;
+}
+
+#add_user_button{
+    background-color: rgb(0, 0, 205);
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#add_user_button:hover{
+    opacity: 0.85;
+}
+
+.no_users_row{
+    width: 100%;
+    padding: 2%;
+    background-color: white;
+    color: black;
+    text-align: center;
+}
+
+.error_row{
+    color: red;
+    font-weight: bold;
+}
+
+.form_note{
+    color: #555;
+    font-size: 0.8rem;
+}
+
+.form_error{
+    color: red;
+    font-size: 0.85rem;
+}
+
+.user_data_header{
+    width: 100%;
+    height: 5vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+    border: 1px solid black;
+    padding: 0% 1%;
+}
+
+.user_data_row{
+    width: 100%;
+    height: 5vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+    border-bottom: 1px solid black;
+    padding: 0% 1%;
+}
+
+.action_buttons{
+    display: flex;
+    gap: 20px;
+}
+
+#user_edit_button{
+    width: 40px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid blue;
+}
+
+#user_delete_button{
+    width: 60px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;    
+    border: 2px solid red;
+    cursor: pointer;
+}
+
+#user_edit_button{
+    cursor: pointer;
+}
+
+.user_form_overlay{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+}
+
+.user_form{
+    background-color: white;
+    width: 90%;
+    max-width: 400px;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.user_form h3{
+    color: rgb(0, 0, 205);
+}
+
+.user_form .form_item_container{
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+}
+
+.user_form input{
+    padding: 8px;
+    border: 1px solid black;
+}
+
+.user_form_buttons{
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+#save_user_button{
+    background-color: rgb(0, 0, 205);
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    font-weight: bold;
+    cursor: pointer;
+    flex: 1;
+}
+
+#cancel_user_button{
+    background-color: white;
+    color: black;
+    border: 2px solid black;
+    padding: 8px 16px;
+    font-weight: bold;
+    cursor: pointer;
+    flex: 1;
+}
+

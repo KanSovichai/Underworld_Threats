@@ -1,0 +1,53 @@
+rules_version = '2';
+
+// Deploy with: firebase deploy --only firestore:rules
+// (or paste this into Firebase Console -> Firestore Database -> Rules)
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    function isOwner(uid) {
+      return isSignedIn() && request.auth.uid == uid;
+    }
+
+    function isAdmin() {
+      return isSignedIn() &&
+        exists(/databases/$(database)/documents/users/$(request.auth.uid)) &&
+        get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == "admin";
+    }
+
+    // users/{uid} — profile documents, one per account.
+    match /users/{uid} {
+      // Anyone signed in can read the user list (needed for the admin
+      // dashboard). Tighten this to isAdmin() if profiles should be
+      // private.
+      allow read: if isSignedIn();
+
+      // A user can create their own profile document (registration).
+      // Admins can create profile docs for accounts they create too.
+      allow create: if isOwner(uid) || isAdmin();
+
+      // A user can update their own profile; admins can update anyone's
+      // (e.g. changing the username from the dashboard). Nobody may set
+      // their own role to "admin" — only an existing admin can grant it.
+      allow update: if (isOwner(uid) && !("role" in request.resource.data.diff(resource.data).affectedKeys()))
+                    || isAdmin();
+
+      // Only admins can delete profile docs from the dashboard.
+      allow delete: if isAdmin();
+    }
+
+    // products/{id} — the shop's product catalog.
+    match /products/{id} {
+      // Public storefront needs to read products without logging in.
+      allow read: if true;
+
+      // Only admins can add, edit, or remove products.
+      allow create, update, delete: if isAdmin();
+    }
+  }
+}

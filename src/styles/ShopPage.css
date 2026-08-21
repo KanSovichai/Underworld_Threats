@@ -1,0 +1,190 @@
+.shop_page_container {
+	width: 100%;
+	min-height: 100vh;
+	background-color: black;
+	padding-bottom: 5%;
+}
+
+.shop_navbar_wrapper {
+	width: 100%;
+	height: 10vh;
+}
+
+.shop_header {
+	width: 100%;
+	padding: 4% 0 2%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	color: white;
+	text-align: center;
+}
+
+.shop_header h1 {
+	font-family: "New Rocker", system-ui;
+	font-size: clamp(2rem, 5vw, 3.5rem);
+	letter-spacing: 4px;
+}
+
+.shop_header p {
+	font-family: "Archivo Black", system-ui;
+	opacity: 0.7;
+	margin-top: 0.5rem;
+}
+
+.shop_category {
+	width: 100%;
+	padding: 3% 5%;
+}
+
+.category_title {
+	font-family: "New Rocker", system-ui;
+	font-size: clamp(1.5rem, 3vw, 2.2rem);
+	color: white;
+	margin-bottom: 2rem;
+	padding-bottom: 0.5rem;
+	border-bottom: 3px solid;
+	display: inline-block;
+}
+
+.dante_title {
+	border-color: var(--dark-red);
+}
+
+.vergil_title {
+	border-color: var(--dark-blue);
+}
+
+.items_grid {
+	width: 100%;
+	display: grid;
+	grid-template-columns: repeat(3, minmax(0, 1fr));
+	gap: 2rem;
+	align-items: start;
+}
+
+.shop_item_card {
+	box-sizing: border-box;
+	width: 100%;
+	min-width: 0;
+	max-width: 100%;
+	min-height: 420px;
+	overflow: hidden;
+	background-color: rgba(255, 255, 255, 0.05);
+	backdrop-filter: blur(10px);
+	border-radius: 12px;
+	padding: 1.5rem;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	text-align: center;
+	color: white;
+	border: 2px solid transparent;
+	transition: transform 0.2s ease;
+}
+
+.shop_item_card:hover {
+	transform: translateY(-5px);
+}
+
+.dante_card {
+	border-color: rgba(133, 9, 0, 0.4);
+}
+
+.vergil_card {
+	border-color: rgba(0, 8, 120, 0.4);
+}
+
+.item_image_wrapper {
+	width: 100%;
+	height: 220px;
+	flex-shrink: 0;
+	border-radius: 8px;
+	overflow: hidden;
+	margin-bottom: 1rem;
+}
+
+.item_image_wrapper img {
+	display: block;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+.item_image_wrapper .no_image {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	color: rgba(255, 255, 255, 0.4);
+	font-size: 0.85rem;
+	background-color: rgba(255, 255, 255, 0.03);
+}
+
+.shop_status {
+	grid-column: 1 / -1;
+	width: 100%;
+	text-align: center;
+	color: rgba(255, 255, 255, 0.6);
+	padding: 2rem 0;
+}
+
+.shop_error {
+	color: #ff6b6b;
+}
+
+.shop_item_card h3 {
+	width: 100%;
+	font-family: "Archivo Black", system-ui;
+	font-size: 1rem;
+	overflow-wrap: anywhere;
+	margin-bottom: 0.5rem;
+}
+
+.item_price {
+	font-weight: bold;
+	opacity: 0.8;
+	margin-bottom: 1rem;
+}
+
+.buy_button {
+	box-sizing: border-box;
+	max-width: 100%;
+	width: 100%;
+	padding: 10px;
+	border: none;
+	border-radius: 50px;
+	color: white;
+	font-family: "New Rocker", system-ui;
+	cursor: pointer;
+	letter-spacing: 1px;
+}
+
+.dante_buy {
+	background-color: var(--dark-red);
+}
+
+.vergil_buy {
+	background-color: var(--dark-blue);
+}
+
+.buy_button:hover {
+	opacity: 0.85;
+}
+
+.shop_footer_wrapper {
+	width: 100%;
+}
+
+@media (max-width: 900px) {
+	.items_grid {
+		grid-template-columns: repeat(2, 1fr);
+	}
+}
+
+@media (max-width: 600px) {
+	.items_grid {
+		grid-template-columns: 1fr;
+	}
+}

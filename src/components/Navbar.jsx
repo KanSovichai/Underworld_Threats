@@ -1,8 +1,19 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "../styles/Navbar.css";
 // import "../scripts/Navbar.js";
 import Logo from "../assets/resource/Underworld_threats_logo.png";
+import { useAuth } from "../context/AuthContext";
+import { logoutUser } from "../firebase/users";
+
 const Navbar = (props) => {
+	const { currentUser, profile, isAdmin } = useAuth();
+	const navigate = useNavigate();
+
+	const handleLogout = async () => {
+		await logoutUser();
+		navigate("/");
+	};
+
 	return (
 		<header>
 			<div className="logo_wrapper">
@@ -44,16 +55,28 @@ const Navbar = (props) => {
 				<ul>
 					<li><Link to='/aboutus' ><a href="">About Us</a></Link></li>
 					<li><Link to="/contactus" ><a href="">Contact Us</a></Link></li>
+					<li><Link to="/shop" ><a href="">Shop</a></Link></li>
 				</ul>
 
 				<div className="profile">
-					{/* <div className="username">Guess</div>
-					<div className="profile_picture">
-						<h2>G</h2>
-					</div> */}
-
-					<Link to='/auth/login' className="login_button" >Login</Link>
-
+					{currentUser ? (
+						<>
+							<div className="username">{profile?.username || currentUser.email}</div>
+							<div className="profile_picture">
+								<h2>{(profile?.username || currentUser.email || "?").charAt(0).toUpperCase()}</h2>
+							</div>
+							{isAdmin && (
+								<Link to="/dashboard" className="login_button">
+									Dashboard
+								</Link>
+							)}
+							<button onClick={handleLogout} className="login_button logout_button">
+								Logout
+							</button>
+						</>
+					) : (
+						<Link to='/auth/login' className="login_button" >Login</Link>
+					)}
 				</div>
 			</div>
 		</header>

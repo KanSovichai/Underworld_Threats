@@ -1,0 +1,208 @@
+.products_data_container{
+    background-color: black;
+    width: 100%;
+    height: 87vh;
+    overflow-y: scroll;
+    position: relative;
+}
+
+.products_data_toolbar{
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    padding: 1%;
+    background-color: white;
+    border-bottom: 1px solid black;
+}
+
+#add_product_button{
+    background-color: rgb(0, 0, 205);
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#add_product_button:hover{
+    opacity: 0.85;
+}
+
+.products_data_header{
+    width: 100%;
+    height: 5vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+    border: 1px solid black;
+    padding: 0% 1%;
+}
+
+.products_data_header p,
+.products_data_row h4,
+.products_data_row p{
+    width: 22%;
+}
+
+.col_image{
+    width: 12% !important;
+}
+
+.product_thumb{
+    width: 12%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.product_thumb img{
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+    border-radius: 4px;
+    border: 1px solid black;
+}
+
+.no_image{
+    font-size: 0.7rem;
+    color: rgba(0, 0, 0, 0.4);
+}
+
+.products_data_row{
+    width: 100%;
+    height: 5vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+    border-bottom: 1px solid black;
+    padding: 0% 1%;
+}
+
+.no_products_row{
+    width: 100%;
+    padding: 2%;
+    background-color: white;
+    color: black;
+    text-align: center;
+}
+
+.error_row{
+    color: red;
+    font-weight: bold;
+}
+
+.upload_status{
+    color: rgb(0, 0, 205);
+    font-size: 0.85rem;
+}
+
+.form_error{
+    color: red;
+    font-size: 0.85rem;
+}
+
+.action_buttons{
+    display: flex;
+    gap: 20px;
+}
+
+#product_edit_button{
+    width: 40px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid blue;
+    cursor: pointer;
+}
+
+#product_delete_button{
+    width: 60px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid red;
+    cursor: pointer;
+}
+
+.product_form_overlay{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+}
+
+.product_form{
+    background-color: white;
+    width: 90%;
+    max-width: 400px;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.product_form h3{
+    color: rgb(0, 0, 205);
+}
+
+.product_form .form_item_container{
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+}
+
+.product_form input,
+.product_form select{
+    padding: 8px;
+    border: 1px solid black;
+}
+
+.image_preview_wrapper{
+    margin-top: 0.5rem;
+    width: 100px;
+    height: 100px;
+}
+
+.image_preview_wrapper img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 6px;
+    border: 1px solid black;
+}
+
+.product_form_buttons{
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+#save_product_button{
+    background-color: rgb(0, 0, 205);
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    font-weight: bold;
+    cursor: pointer;
+    flex: 1;
+}
+
+#cancel_product_button{
+    background-color: white;
+    color: black;
+    border: 2px solid black;
+    padding: 8px 16px;
+    font-weight: bold;
+    cursor: pointer;
+    flex: 1;
+}

@@ -98,3 +98,15 @@
 .register:hover{
     opacity: 1;
 }
+
+.register:disabled{
+    opacity: 0.3;
+    cursor: not-allowed;
+}
+
+.auth_error{
+    color: #ff6b6b;
+    font-size: 0.85rem;
+    min-height: 1.2em;
+    text-align: center;
+}
