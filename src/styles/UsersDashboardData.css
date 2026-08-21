@@ -1,5 +1,5 @@
 .users_data_container{
-    background-color: black;
+    /* background-color: black; */
     width: 100%;
     height: 87vh;
     overflow-y: scroll;
@@ -153,6 +153,9 @@
     font-weight: bold;
     cursor: pointer;
     flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 #cancel_user_button{
@@ -163,5 +166,8 @@
     font-weight: bold;
     cursor: pointer;
     flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
