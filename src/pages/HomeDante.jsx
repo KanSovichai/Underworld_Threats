@@ -1,10 +1,46 @@
+import { useEffect, useState } from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import "../styles/HomeDante.css";
 import GothicDante from "../assets/resource/Gothic_not_dante.webp";
 import DanteSword from "../assets/resource/Dante_sword.jpg";
+import { subscribeToProducts } from "../firebase/products";
+
+const cloudinaryCloudName = import.meta.env.VITE_CLOUDINARY_CLOUD_NAME;
+
+function getProductImage(product) {
+	if (typeof product.image === "string" && product.image.trim()) {
+		return product.image.trim();
+	}
+	if (product.imagePublicId && cloudinaryCloudName) {
+		return `https://res.cloudinary.com/${cloudinaryCloudName}/image/upload/f_auto,q_auto/${product.imagePublicId}.jpg`;
+	}
+	return "";
+}
 
 const Home = (props) => {
+	const [products, setProducts] = useState([]);
+	const [loading, setLoading] = useState(true);
+	const [loadError, setLoadError] = useState("");
+
+	useEffect(() => {
+		const unsubscribe = subscribeToProducts(
+			(items) => {
+				setProducts(
+					items.filter(
+						(product) => product.category?.toLowerCase() === "dante",
+					),
+				);
+				setLoading(false);
+			},
+			(err) => {
+				setLoadError(err.message || "Failed to load products.");
+				setLoading(false);
+			},
+		);
+		return unsubscribe;
+	}, []);
+
 	return (
 		<div className="container">
 			<div className="hero_container">
@@ -42,85 +78,47 @@ const Home = (props) => {
 				<div className="dante_sword_wrapper">
 					<img src={DanteSword} alt="" />
 				</div>
-                <h1 className="banner_text">Get the son of sparda's items today.</h1>
+				<h1 className="banner_text">Get the son of sparda's items today.</h1>
 			</div>
 
-            <div className="items_container">
-                <div className="items">
+			<div className="items_container">
+				<div className="items">
+					{loading && <div className="item_title">Loading products...</div>}
+					{!loading && loadError && (
+						<div className="item_title">{loadError}</div>
+					)}
+					{!loading && !loadError && products.length === 0 && (
+						<div className="item_title">No Dante products available yet.</div>
+					)}
+					{products.map((product) => {
+						const imageUrl = getProductImage(product);
 
+						return (
+							<div className="item_card" key={product.id}>
+								<div className="frame_style"></div>
+								<div className="content">
+									<div className="item_img">
+										{imageUrl ? (
+											<img src={imageUrl} alt={product.name} />
+										) : (
+											<span className="no_image">No image available</span>
+										)}
+									</div>
+									<div className="item_title">
+										<h1>{product.name}</h1>
+									</div>
+									<button className="view_button">VIEW</button>
+								</div>
+							</div>
+						);
+					})}
+				</div>
+				<div className="dante_pic_right_banner"></div>
+			</div>
 
-                    <div className="item_card">
-                        <div className="frame_style"></div>
-                        <div className="content">
-                            <div className="item_img">
-                                <img src="https://m.media-amazon.com/images/I/71gt1HB3kDL._AC_UY350_.jpg" alt="" />
-                            </div>
-                            <div className="item_title">
-                                <h1>Dante Sword</h1>
-                            </div>
-                            <button className="view_button">
-                                VIEW
-                            </button>
-                        </div>
-                    </div>
-
-					<div className="item_card">
-                        <div className="frame_style"></div>
-                        <div className="content">
-                            <div className="item_img">
-                                <img src="https://m.media-amazon.com/images/I/71gt1HB3kDL._AC_UY350_.jpg" alt="" />
-                            </div>
-                            <div className="item_title">
-                                <h1>Dante Sword</h1>
-                            </div>
-                            <button className="view_button">
-                                VIEW
-                            </button>
-                        </div>
-                    </div>
-
-					<div className="item_card">
-                        <div className="frame_style"></div>
-                        <div className="content">
-                            <div className="item_img">
-                                <img src="https://m.media-amazon.com/images/I/71gt1HB3kDL._AC_UY350_.jpg" alt="" />
-                            </div>
-                            <div className="item_title">
-                                <h1>Dante Sword</h1>
-                            </div>
-                            <button className="view_button">
-                                VIEW
-                            </button>
-                        </div>
-                    </div>
-
-					<div className="item_card">
-                        <div className="frame_style"></div>
-                        <div className="content">
-                            <div className="item_img">
-                                <img src="https://m.media-amazon.com/images/I/71gt1HB3kDL._AC_UY350_.jpg" alt="" />
-                            </div>
-                            <div className="item_title">
-                                <h1>Dante Sword</h1>
-                            </div>
-                            <button className="view_button">
-                                VIEW
-                            </button>
-                        </div>
-                    </div>
-
-                    
-                
-                
-                </div>
-                <div className="dante_pic_right_banner">
-                </div>
-            </div>
-
-            <div className="footer_wrapper">
-                <Footer></Footer>
-            </div>
-
+			<div className="footer_wrapper">
+				<Footer></Footer>
+			</div>
 		</div>
 	);
 };

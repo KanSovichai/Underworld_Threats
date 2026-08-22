@@ -1,11 +1,47 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-import Intro from "../assets/resource/judgement_cut_end.mp4"
+import Intro from "../assets/resource/judgement_cut_end.mp4";
 import "../styles/HomeVergil.css";
+import { subscribeToProducts } from "../firebase/products";
+
+const cloudinaryCloudName = import.meta.env.VITE_CLOUDINARY_CLOUD_NAME;
+
+function getProductImage(product) {
+	if (typeof product.image === "string" && product.image.trim()) {
+		return product.image.trim();
+	}
+	if (product.imagePublicId && cloudinaryCloudName) {
+		return `https://res.cloudinary.com/${cloudinaryCloudName}/image/upload/f_auto,q_auto/${product.imagePublicId}.jpg`;
+	}
+	return "";
+}
+
 const HomeVergil = (props) => {
+	const [products, setProducts] = useState([]);
+	const [loading, setLoading] = useState(true);
+	const [loadError, setLoadError] = useState("");
 	const videoRef = useRef(null);
-	const containerRef = useRef(null)
+	const containerRef = useRef(null);
+
+	useEffect(() => {
+		const unsubscribe = subscribeToProducts(
+			(items) => {
+				setProducts(
+					items.filter(
+						(product) => product.category?.toLowerCase() === "vergil",
+					),
+				);
+				setLoading(false);
+			},
+			(err) => {
+				setLoadError(err.message || "Failed to load products.");
+				setLoading(false);
+			},
+		);
+		return unsubscribe;
+	}, []);
+
 	useEffect(() => {
 		const video = videoRef.current;
 		const container = containerRef.current;
@@ -18,16 +54,19 @@ const HomeVergil = (props) => {
 
 		video.addEventListener("ended", handleEnded);
 		return () => video.removeEventListener("ended", handleEnded);
-	}
-		
-	,[]);
-
+	}, []);
 
 	return (
-		<div ref={ containerRef } id="vergil_main_container">
+		<div ref={containerRef} id="vergil_main_container">
 			<div className="hero_vergil_container">
-
-				<video ref={videoRef} src={ Intro } autoPlay muted playsInline id="intro_mp4"></video>	
+				<video
+					ref={videoRef}
+					src={Intro}
+					autoPlay
+					muted
+					playsInline
+					id="intro_mp4"
+				></video>
 
 				<div className="vergil_navbar_wrapper">
 					<Navbar status={props.status}></Navbar>
@@ -36,7 +75,6 @@ const HomeVergil = (props) => {
 					<div className="hero_vergil_text">
 						<h1>The Alpha & Omega</h1>
 					</div>
-					
 				</div>
 			</div>
 			<div className="vergil_container">
@@ -55,69 +93,44 @@ const HomeVergil = (props) => {
 
 			<div className="vergil_feature_items_container">
 				<div className="vergil_items_container">
+					{loading && (
+						<div className="vergil_item_title">Loading products...</div>
+					)}
+					{!loading && loadError && (
+						<div className="vergil_item_title">{loadError}</div>
+					)}
+					{!loading && !loadError && products.length === 0 && (
+						<div className="vergil_item_title">
+							No Vergil products available yet.
+						</div>
+					)}
+					{products.map((product) => {
+						const imageUrl = getProductImage(product);
 
-
-					<div className="vergil_item_card">
-                        <div className="vergil_item_content">
-                            <div className="vergil_item_img">
-                                <img src="https://i.ebayimg.com/images/g/oJYAAeSwK~pog0vU/s-l1200.jpg" alt="" />
-                            </div>
-                            <div className="vergil_item_title">
-                                <h1>Vergil Jacket</h1>
-                            </div>
-                            <button className="vergil_view_button">
-                                VIEW
-                            </button>
-                        </div>
-                    </div>
-					<div className="vergil_item_card">
-                        <div className="vergil_item_content">
-                            <div className="vergil_item_img">
-                                <img src="https://i.ebayimg.com/images/g/oJYAAeSwK~pog0vU/s-l1200.jpg" alt="" />
-                            </div>
-                            <div className="vergil_item_title">
-                                <h1>Vergil Jacket</h1>
-                            </div>
-                            <button className="vergil_view_button">
-                                VIEW
-                            </button>
-                        </div>
-                    </div>
-					<div className="vergil_item_card">
-                        <div className="vergil_item_content">
-                            <div className="vergil_item_img">
-                                <img src="https://i.ebayimg.com/images/g/oJYAAeSwK~pog0vU/s-l1200.jpg" alt="" />
-                            </div>
-                            <div className="vergil_item_title">
-                                <h1>Vergil Jacket</h1>
-                            </div>
-                            <button className="vergil_view_button">
-                                VIEW
-                            </button>
-                        </div>
-                    </div>
-					<div className="vergil_item_card">
-                        <div className="vergil_item_content">
-                            <div className="vergil_item_img">
-                                <img src="https://i.ebayimg.com/images/g/oJYAAeSwK~pog0vU/s-l1200.jpg" alt="" />
-                            </div>
-                            <div className="vergil_item_title">
-                                <h1>Vergil Jacket</h1>
-                            </div>
-                            <button className="vergil_view_button">
-                                VIEW
-                            </button>
-                        </div>
-                    </div>
+						return (
+							<div className="vergil_item_card" key={product.id}>
+								<div className="vergil_item_content">
+									<div className="vergil_item_img">
+										{imageUrl ? (
+											<img src={imageUrl} alt={product.name} />
+										) : (
+											<span className="no_image">No image available</span>
+										)}
+									</div>
+									<div className="vergil_item_title">
+										<h1>{product.name}</h1>
+									</div>
+									<button className="vergil_view_button">VIEW</button>
+								</div>
+							</div>
+						);
+					})}
 				</div>
 			</div>
-			
+
 			<div className="vergil_footer_wrapper">
 				<Footer></Footer>
 			</div>
-
-			
-
 		</div>
 	);
 };
