@@ -39,6 +39,9 @@ const Navbar = (props) => {
 							<Link to="/vergil">Vergil</Link>
 						</a>
 					</li>
+					<li className="mobile_about_item">
+						<Link to="/aboutus">About Us</Link>
+					</li>
 					{!currentUser && (
 						<li className="mobile_login_item">
 							<Link to="/auth/login" className="login_button">

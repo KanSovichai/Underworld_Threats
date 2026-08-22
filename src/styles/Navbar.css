@@ -57,6 +57,10 @@ header {
 	display: none;
 }
 
+.mobile_about_item {
+	display: none;
+}
+
 .nav_container ul li a {
 	text-decoration: none;
 	width: 100%;
@@ -241,6 +245,10 @@ header {
 		display: none;
 	}
 
+	.mobile_about_item {
+		display: none;
+	}
+
 	/* Profile wrapper shrinks to just the avatar/name */
 	.profile_wrapper {
 		width: auto;
@@ -287,6 +295,12 @@ header {
 		height: 60px;
 	}
 
+	header:has(#toggle-input:checked) .nav_container ul .mobile_about_item {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+
 	header:has(#toggle-input:checked) .nav_container ul .mobile_login_item {
 		display: flex;
 		justify-content: center;
@@ -307,12 +321,12 @@ header {
 		font-size: 1.2rem;
 	}
 
-	/* About Us & Contact Us dropdown (stacked below Dante/Vergil) */
+	/* Contact Us and Shop dropdown (stacked below Dante/Vergil/About Us) */
 	header:has(#toggle-input:checked) .profile_wrapper ul {
 		display: flex;
 		flex-direction: column;
 		position: absolute;
-		top: calc(7vh + 120px); /* 2 nav items × 60px */
+		top: calc(7vh + 180px); /* 3 nav items × 60px */
 		left: 0;
 		width: 100%;
 		height: auto;
@@ -347,13 +361,13 @@ header {
 		background-color: rgba(255, 255, 255, 0.08);
 	}
 
-	/* Profile row inside the open hamburger menu (stacked below the two link lists) */
+	/* Profile row inside the open hamburger menu */
 	header:has(#toggle-input:checked) .profile {
 		display: flex;
 		position: absolute;
 		top: calc(
-			7vh + 240px
-		); /* below 2 nav items (120px) + 2 profile links (120px) */
+			7vh + 300px
+		); /* below 3 nav items (180px) + 2 profile links (120px) */
 		left: 0;
 		width: 100%;
 		height: 60px;
